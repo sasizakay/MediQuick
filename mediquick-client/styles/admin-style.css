@@ -1,0 +1,357 @@
+﻿
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+#usersTable, #QuestionTable {
+    margin-top: 10px;
+    border: 1px black solid;
+    align-items: flex-end; /* Align items to the right */
+    width: 100%; /* או כל רוחב אחר שמתאים */
+    margin: 0 auto; /* כדי למרכז את הטבלה */
+    overflow-x: auto; /* לאפשר גלילה אופקית */
+}
+
+#usersTable_filter > label > input {
+    margin-left: 5px;
+}
+
+#QuestionTable > label > input {
+    margin-left: 5px;
+}
+
+.container {
+    padding-top: 40px;
+}
+
+#usersTable td, #usersTable th, #QuestionTable td, #QuestionTable th {
+    padding: 10px;
+    font-size: 18px;
+    vertical-align: middle; /* Ensure text is vertically aligned in the middle */
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+    .control > input, .control > label, .control > select {
+        margin: 15px;
+        width: 130px;
+    }
+
+
+.btn-admin {
+    font-size: 15px;
+    width: 20%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: #03a696;
+    color: #ffffff;
+}
+
+table.dataTable thead {
+    background-color: #0b4848bf;
+    color: white;
+}
+
+.modal-content {
+    width: 650px;
+    height: 470px;
+    align-items: center;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    position: relative;
+    background-color: #fefefe;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#addQuestionForm div {
+    margin: 20px;
+}
+
+.input-box input, #topicSelectToGemini {
+    width: 100%; /* Full width */
+    /* padding: 10px;*/
+    box-sizing: border-box;
+    text-align: right; /* Align text inside input to the right */
+    direction: rtl; /* Ensure placeholder text aligns properly for right-to-left languages */
+}
+
+
+.primary-btn {
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #03a696;
+    color: #ffffff;
+}
+
+*[dir=rtl] table.dataTable th.dt-type-numeric,
+*[dir=rtl] table.dataTable th.dt-type-date,
+*[dir=rtl] table.dataTable td.dt-type-numeric,
+*[dir=rtl] table.dataTable td.dt-type-date {
+    direction: rtl;
+    text-align: right !important;
+}
+
+table.dataTable thead > tr > th.dt-orderable-asc span.dt-column-order,
+table.dataTable thead > tr > th.dt-orderable-desc span.dt-column-order,
+table.dataTable thead > tr > th.dt-ordering-asc span.dt-column-order,
+table.dataTable thead > tr > th.dt-ordering-desc span.dt-column-order,
+table.dataTable thead > tr > td.dt-orderable-asc span.dt-column-order,
+table.dataTable thead > tr > td.dt-orderable-desc span.dt-column-order,
+table.dataTable thead > tr > td.dt-ordering-asc span.dt-column-order,
+table.dataTable thead > tr > td.dt-ordering-desc span.dt-column-order {
+    right: 80%;
+}
+
+.clear-form-logo {
+    left: 15px;
+    position: absolute;
+}
+
+#send-orders-modal-btn {
+    position: absolute;
+    top: 280px;
+    right: 40px;
+}
+
+.btn-admin {
+    min-width: 250px; /* או כל ערך אחר שמתאים */
+    max-width: 100%;
+    margin: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Add margin between input fields */
+#EditUserModal .input-box, #EditQuestionModal .input-box {
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+    /* Ensure the input fields take full width and have padding */
+    #EditUserModal .input-box input, #EditQuestionModal .input-box input, #topicSelect {
+        width: 100%;
+        padding: 10px; /* Adjust as needed */
+        box-sizing: border-box;
+        text-align: right; /* Align text inside input to the right */
+        direction: rtl; /* Ensure placeholder text aligns properly for right-to-left languages */
+    }
+
+/* Style the submit button */
+#EditUserModal .primary-btn, #EditQuestionModal .primary-btn {
+    margin-top: 30px;
+    display: block;
+    width: 100%;
+    padding: 10px; /* Adjust as needed */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Position the eye icon within the password input box */
+.password-box {
+    position: relative;
+}
+
+    .password-box input {
+        padding-right: 40px; /* Make space for the eye icon */
+    }
+
+.eye_img {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Add margin below the clear form logo */
+.suForm {
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+/* Add margin between the close button and the clear form logo */
+.modal-content .close {
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+/* Add margin between the clear form logo and the first input field */
+.suForm {
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+#geminiModal {
+    width: 650px;
+    height: 340px;
+    align-items: center;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    position: relative;
+    background-color: #fefefe;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#questionEditModal {
+    height: 660px;
+}
+
+.form-control {
+    height: 45px;
+}
+
+.edit-user-row {
+    width: 100%;
+}
+
+
+
+#QuestionTable tbody tr {
+    height: 40px;
+}
+
+/* עיצוב הספינר */
+.spinner {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* ערך גבוה כדי להבטיח שהספינר מעל כל האלמנטים האחרים */
+}
+
+.spinner-container {
+    text-align: center;
+    color: white;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border: 0.3em solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ודא שהמודאל לא יהיה מעל הספינר */
+.modal {
+    z-index: 1000; /* ערך נמוך יותר מהספינר */
+}
+
+#renderQuestionTableAgain {
+    min-width: 150px;
+    width: 150px;
+    padding: 0px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    color: #03a696;
+    border: 1px solid #03a696;
+    position: absolute;
+    top: 258px;
+    left: 450px;
+    display: none;
+    z-index: 10;
+}
+/**/
+#QuestionForm {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#QuestionTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+    #QuestionTable thead {
+        background-color: #0b4848;
+        color: white;
+    }
+
+    #QuestionTable th {
+        padding: 12px 15px;
+        text-align: right;
+        border-bottom: 1px solid #ddd;
+        vertical-align: middle; /* This centers the text vertically in the header cells */
+    }
+
+    #QuestionTable td {
+        padding: 12px 15px;
+        text-align: right;
+        border-bottom: 1px solid #ddd;
+        vertical-align: top; /* This aligns content to the top in regular cells */
+    }
+
+    #QuestionTable tbody tr:nth-child(even) {
+        background-color: #f8f8f8;
+    }
+
+    #QuestionTable tbody tr:hover {
+        background-color: #e6e6e6;
+        transition: background-color 0.3s ease;
+    }
+
+    #QuestionTable .btn {
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        transition: all 0.3s ease;
+    }
+
+    #QuestionTable .btn-primary {
+        background-color: #03a696;
+        border-color: #03a696;
+    }
+
+        #QuestionTable .btn-primary:hover {
+            background-color: #028e80;
+            border-color: #028e80;
+        }
+
+@media screen and (max-width: 1024px) {
+    #QuestionTable {
+        font-size: 12px;
+    }
+
+        #QuestionTable th, #QuestionTable td {
+            padding: 8px 10px;
+        }
+}
+

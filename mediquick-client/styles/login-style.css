@@ -1,0 +1,266 @@
+* {
+  font-family: 'poppins', sans-serif;
+  font-family: 'open sans';
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('./../images/login-image.jpeg');
+  background-size: cover;
+  background-position: -60px 7%;
+  background-repeat: no-repeat;
+  /* overflow: hidden; */
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+
+.login-card {
+  /* width: 30%; */
+  min-width: 320px;
+  /* float: right; */
+  /* direction: rtl; */
+  background-color: #ffffff;
+  /* position: relative; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  flex-grow: 0.5;
+  /* height: 50% */
+}
+
+.logo-image {
+  /* width: 100%; Make the image fill the entire container */
+  /* padding-top: 50%; Maintain aspect ratio (1:1) */
+  /*background-image: url('./../images/logo1.png');*/
+  /* Specify the image */
+  background-size: cover;
+  /* Cover the entire container without stretching */
+  background-repeat: no-repeat;
+  /* background-position: 40px -30px; */
+  display: flex;
+  justify-content: center;
+  padding: 0px 45px;
+  /* flex-shrink: 0.12; */
+}
+
+.logo {
+  max-width: 100%;
+
+}
+
+.input-box input {
+  margin-bottom: 15px;
+  margin-top: 15px;
+  height: 35px;
+  width: 97%;
+  font-size: 18px;
+  padding: 0px 0px 0px 8px;
+  background-color: #f1f3f6;
+  border-radius: 8.08px;
+  border: none;
+  outline: none;
+  max-width: 550px;
+}
+
+
+#login-form a {
+  padding-right: 30px;
+  padding-bottom: 15px;
+  align-self: flex-end;
+}
+
+
+.primary-btn {
+  width: 85%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #03a696;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  background-color: #ffffff;
+  color: #03a696;
+  border: 1px solid #03a696;
+  width: 85%;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#login-form label {
+  color: #c5c5c5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  position: relative;
+  width: 85%;
+}
+
+.modal .input-box,
+#sign-up-modal-btn {
+  width: 75%;
+  height: 11vh;
+}
+
+.modal .input-box input {
+  height: 60%;
+}
+
+#sign-up-modal-btn {
+  margin-top: 4%;
+  font-size: 20px;
+}
+
+.input-box img {
+  position: absolute;
+  width: 35px;
+  top: 16px;
+  right: 1px;
+
+}
+
+
+
+#password-eye-icon {
+  position: absolute;
+  right: 45px;
+  top: 24.5px;
+  width: 20px;
+  cursor: pointer;
+}
+
+
+  /* The Modal (background) */
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100vh;
+    /* Full height */
+    overflow: hidden;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Black w/ opacity */
+  }
+
+  #sign-up-form {
+    padding-left: 18.76px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 2.5% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border-radius: 10px;
+    height: 80vh;
+    width: 35%;
+    /* Could be more or less, depending on screen size */
+  }
+
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+  #modal-password-eye-icon,
+  #modal-confirm-password-eye-icon {
+    position: absolute;
+    left: 10px;
+    top: 26px;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .hebrew::placeholder,
+  .align-right {
+    text-align: right;
+  }
+
+  .clear-form {
+    position: absolute;
+    top: 60px;
+    float: left;
+    cursor: pointer;
+  }
+
+  .email,
+  .password {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+/* ------------------------------ */
+/*Media Queries*/
+@media (max-width: 600px) {
+* {
+  /* overflow:scroll; */
+}
+
+  .card {
+    width: 100%;
+    /* opacity: 0.93; */
+    background-color: rgba(255, 255, 255, 0.93);
+  }
+
+  .input-box {
+    opacity: 1;
+  }
+
+  .input-box input {
+    font-size: 14px;
+  }
+  .modal-content {
+    width: 85dvw;
+    height: 90dvh;
+  }
+}
+#passwordError {
+    color: red;
+    font-size: 15px;
+    margin: 5px;
+    direction: rtl;
+    text-align: right;
+}

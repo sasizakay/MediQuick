@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  main {
+    font-family: 'poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    direction: rtl;
+    flex-wrap: wrap;
+    gap: 35px 35px;
+    padding: 10px 20px;
+    margin: 30px 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding-top:30px;
+}
+
+.topic-forum {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 180px;
+    border: 1.6px solid #03a696;
+    border-radius: 15px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.6);
+    background: #fffefe;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7); /* Soft shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+    .topic-forum:hover {
+        transform: scale(1.05); /* Hover effect */
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2), -10px -10px 20px rgba(255, 255, 255, 0.8); /* Enhanced shadow on hover */
+    }
+
+
+
+

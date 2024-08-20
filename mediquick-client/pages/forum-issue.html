@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- ajax Calls -->
+    <script src="./../scripts/ajaxCalls.js"></script>
+    <!-- Page script -->
+    <script src="./../scripts/general-script.js"></script>
+    <script src="./../scripts/forum-issue.js" defer></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="./../styles/forum-issue-style.css">
+    <link rel="stylesheet" href="./../styles/navbar-style.css">
+    <!-- Poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Open-Sans font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <title>כותרת הסוגיה</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./../images/favicon/site.webmanifest">
+</head>
+<body>
+    <header>
+        <img src="./../images/logo1.png" class="logo" alt="">
+        <nav>
+            <div class="nav-links">
+                <a href="./forum.html">
+                    <div class="clicked">פורום</div>
+                </a>
+                <a href="./test.html">
+                    <div>מבחן</div>
+                </a>
+                <a href="./practice.html">
+                    <div>תרגול</div>
+                </a>
+                <a href="./personal-page.html">
+                    <div><img src="./../images/icons/person.svg" alt=""></div>
+                </a>
+                <a href="./main-page.html">
+                    <div><img src="./../images/icons/home.svg" alt=""></div>
+                </a>
+                <div class="menu" onclick="toggleMenu()">
+                    <img src="./../images/icons/menu-hamburger.svg" alt="תפריט">
+                </div>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="./main-page.html">עמוד ראשי</a>
+                <a href="./personal-page.html">אזור אישי</a>
+                <a href="./practice.html">תרגול</a>
+                <a href="./test.html">מבחן</a>
+                <a class="clicked" href="./forum.html">פורום</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="container" class="container">
+        </div>
+        <!--edit Issue modal-->
+        <div id="editIssueModal" class="modal">
+            <div class="modal-content" id="AddIssueModal">
+                <span class="closeIssue">&times;</span>
+                <div class="clear-form suForm">
+                    <img src="./../images/icons/clear-form-24.svg" alt="" class="clear-form-logo"
+                         title="Delete details" onclick="resetFormIssue()">
+                </div>
+                <form action="" id="editIssueForm" class="AIForm">
+                    <div class="input-box">
+                        <label>כותרת הסוגיה:</label>
+                        <input class="hebrew form-control" type="text" id="issueTitle" placeholder="כותרת הסוגיה">
+                    </div>
+                    <div class="input-box">
+                        <label>תוכן הסוגיה:</label>
+                        <input class="hebrew form-control" type="text" id="issueContent" placeholder="תוכן הסוגיה">
+                    </div>
+                    <input type="submit" value="שלח" class="primary-btn btn btn-primary" id="edit-issue-modal-btn">
+                </form>
+            </div>
+        </div>
+
+        <!--add comment modal-->
+        <div id="addCommentModal" class="modal">
+            <div class="modal-content" id="addCommentModal">
+                <span class="closeComment">&times;</span>
+                <div class="clear-form suForm">
+                    <img src="./../images/icons/clear-form-24.svg" alt="" class="clear-form-logo"
+                         title="Delete details" onclick="resetFormAddComment()">
+                </div>
+                <form action="" id="addCommentForm" class="AIForm">
+                    <div class="input-box">
+                        <label>תוכן התגובה:</label>
+                        <input class="hebrew form-control" type="text" id="commentContent" placeholder="תוכן התגובה">
+                    </div>
+                    <input type="submit" value="שלח" class="primary-btn btn btn-primary" id="add-comment-modal-btn">
+                </form>
+            </div>
+        </div>
+        <!--edit comment modal-->
+        <div id="editCommentModal" class="modal">
+            <div class="modal-content" id="editCommentModal">
+                <span class="closeEditComment">&times;</span>
+                <div class="clear-form suForm">
+                    <img src="./../images/icons/clear-form-24.svg" alt="" class="clear-form-logo"
+                         title="Delete details" onclick="resetFormEditComment()">
+                </div>
+                <form action="" id="editCommentForm" class="AIForm">
+                    <div class="input-box">
+                        <input type="hidden" id="hiddenCommentId" value="">
+                        <label>תוכן התגובה:</label>
+                        <input class="hebrew form-control" type="text" id="editCommentContent" placeholder="תוכן התגובה">
+                    </div>
+                    <input type="submit" value="שלח" class="primary-btn btn btn-primary" id="edit-comment-modal-btn">
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

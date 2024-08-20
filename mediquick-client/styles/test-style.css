@@ -1,0 +1,305 @@
+
+
+
+main {
+    direction: rtl;
+    height: calc(100vh - 50px);
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-wrapper {
+    padding-right: 6dvw;
+    position: center;
+}
+
+.question {
+    flex-grow: 4;
+    padding: 20px;
+    max-width: fit-content;
+    flex-basis: 75%;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    list-style: none;
+}
+
+.selected-option {
+    background-color: #03a69645;
+    border-radius: 15px;
+    padding: 0px 8px;
+    opacity: 0.9;
+    transition: 0.2s ease;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+    .buttons img {
+        width: 30px;
+    }
+
+.option {
+    width: fit-content;
+    cursor: pointer;
+}
+
+.selected-option {
+    background-color: #03a69645;
+    border-radius: 15px;
+    padding: 0px 8px;
+    opacity: 0.9;
+    transition: 0.2s ease;
+}
+
+.primary-btn {
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: #03a696;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    background-color: #ffffff;
+    color: #03a696;
+    border: 1px solid #03a696;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.red-btn {
+    background-color: #d74d4d;
+    color: white;
+    border: 1px solid #03a696;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.correct-answer-selected {
+    background-color: #11ca80e4;
+    border-radius: 15px;
+    padding: 0px 8px;
+    opacity: 0.9;
+    transition: 0.2s ease;
+}
+
+.wrong-answer-selected {
+    background-color: #d74d4dda;
+    border-radius: 15px;
+    padding: 0px 8px;
+    opacity: 0.9;
+    transition: 0.2s ease;
+}
+
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    padding: 20px;
+    max-width: 300px;
+}
+
+.grid-item {
+    width: 35px;
+    height: 35px;
+    font-size: 17px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .grid-item:hover {
+        background-color: #e0e0e0;
+        color: #000000;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+.countdown {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.6);
+    border: 1px solid #03a696;
+    border-radius: 10px;
+    width: 150px;
+    max-width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #03a69625;
+    flex-basis: 100%;
+    order: 3;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    padding: 20px;
+}
+
+.q-answered {
+    background-color: #03a69625;
+}
+
+.q-current {
+    background-color: #03a696aa;
+}
+
+.instructions {
+    max-width: 70%;
+    padding: 14px;
+    text-align: center;
+}
+
+.pre-test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    max-height: 1000px;
+    overflow: hidden;
+}
+
+.test-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    max-height: 0;
+    width: 80%;
+    overflow: hidden;
+}
+
+.upDiv {
+    display: flex;
+/*    flex-wrap: wrap;
+*/    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    direction: rtl;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .container {
+        padding: 15px;
+    }
+
+    .test-content {
+        width: 90%;
+    }
+
+    .buttons {
+        width: 80%;
+    }
+    .upDiv {
+        justify-content: center;
+        flex-wrap:wrap;
+    }
+    .grid-list {
+        grid-template-columns: repeat(5, 1fr);
+        max-width: 250px;
+    }
+
+    .grid-item {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+}
+/* שינויים נוספים למסכים קטנים יותר */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .test-content {
+        width: 95%;
+    }
+    .upDiv {
+        justify-content: center;
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    /* כאן נגדיר 3 עמודות */
+    .grid-list {
+        grid-template-columns: repeat(5, 1fr);
+        max-width: 240px; /* יקטן קצת כדי להתאים למסכים קטנים */
+    }
+
+    .grid-item {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+    }
+    .upDiv{
+        justify-content:center;
+    }
+    .test-content {
+        width: 100%;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+        align-items:center;
+    }
+
+    /* כאן נגדיר 4 עמודות */
+    .grid-list {
+        grid-template-columns: repeat(6, 1fr);
+        max-width: 200px;
+
+    }
+
+    .grid-item {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+    /*סוף*/
+}
+
+

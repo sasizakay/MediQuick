@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- ajax Calls -->
+    <script src="./../scripts/ajaxCalls.js"></script>
+    <!-- Page script -->
+    <script src="./../scripts/general-script.js"></script>
+    <script src="./../scripts/personal-page-script.js" defer></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="./../styles/navbar-style.css">
+    <link rel="stylesheet" href="./../styles/personal-page-style.css">
+    <!-- Poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+          rel="stylesheet">
+    <!-- Open-Sans font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@200;300;400;500;600&display=swap"
+          rel="stylesheet">
+    <title>אזור אישי</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./../images/favicon/site.webmanifest">
+
+</head>
+
+<body>
+    <header>
+        <img src="./../images/logo1.png" class="logo" alt="">
+        <nav>
+            <div class="nav-links">
+                <a href="./forum.html">
+                    <div>פורום</div>
+                </a>
+                <a href="./test.html">
+                    <div>מבחן</div>
+                </a>
+                <a href="./practice.html">
+                    <div>תרגול</div>
+                </a>
+                <a href="#">
+                    <div class="clicked"><img src="./../images/icons/person-clicked.svg" alt=""></div>
+                </a>
+                <a href="./main-page.html">
+                    <div><img src="./../images/icons/home.svg" alt=""></div>
+                </a>
+                <div class="menu" onclick="toggleMenu()">
+                    <img src="./../images/icons/menu-hamburger.svg" alt="תפריט">
+                </div>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="./main-page.html">עמוד ראשי</a>
+                <a class="clicked" href="#">אזור אישי</a>
+                <a href="./practice.html">תרגול</a>
+                <a href="./test.html">מבחן</a>
+                <a href="./forum.html">פורום</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="changePassword" onclick="ChangePasswordModal()">
+            <img src="./../images/icons/edit-pencil.svg" alt="" srcset="">
+            שנה סיסמה
+        </div>
+        <div class="timeline-container">
+            <div class="timeline" id="timeline">
+                <!-- Elements will be dynamically added here -->
+            </div>
+        </div>
+        <div id="charts">
+            <div id="TestAverageAndGrades">
+                <span><strong>כמות המבחנים שבוצעו עד כה:</strong></span>
+                <span id="countOfTest"></span>
+                <br />
+                <span><strong>ממוצע ציונים:</strong></span>
+                <span id="avgOfTestGrades"></span>
+            </div>
+            <div class="chart-container">
+                <canvas id="questionsChart"></canvas>
+            </div>
+            <div class="chart-container small-chart">
+                <canvas id="percentageCorrectChart"></canvas>
+            </div>
+            <div id="calendar-container">
+                <div id="calendar-header">
+                    <button id="prev-month">‹</button>
+                    <div id="month-year"></div>
+                    <button id="next-month">›</button>
+                </div>
+                <div id="calendar-days">
+                    <div>א'</div>
+                    <div>ב'</div>
+                    <div>ג'</div>
+                    <div>ד'</div>
+                    <div>ה'</div>
+                    <div>ו'</div>
+                    <div>ש'</div>
+                </div>
+                <div id="calendar-dates"></div>
+            </div>
+            <!--Tooltip for adding tasks-->
+            <div id="task-tooltip" class="tooltip">
+                <div>
+                    <input type="text" id="task-input" placeholder="הזן משימה">
+                </div>
+                <div>
+                    <button id="save-task">שמור</button>
+                    <button id="cancel-task">בטל</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="questions-container">
+                <!--class="container"-->
+                <h2>שאלות מועדפות</h2>
+            </div>
+            <div id="testContainer">
+                <h2>מבחנים</h2>
+                <table id="testSummaryTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>ציון</th>
+                            <th>תאריך</th>
+                            <th>קישור לסיכום מבחן</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- השורות יתווספו כאן דינאמית -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="changePasswordModal" class="modal">
+            <div class="modal-content" id="changePasswordModal">
+                <span class="closePassword">&times;</span>
+                <div class="clear-form suForm">
+                    <img src="./../images/icons/clear-form-24.svg" alt="" class="clear-form-logo"
+                         title="Delete details" onclick="resetFormPassword()">
+                </div>
+                <form action="" id="changePasswordForm" class="AIForm">
+
+                    <div class="input-box">
+                        <label>סיסמא נוכחית</label>
+                        <input class="hebrew form-control" type="text" id="nowPassword" placeholder="סיסמא נוכחית" required>
+                    </div>
+                    <div class="input-box">
+                        <label>סיסמא חדשה:</label>
+                        <input class="hebrew form-control" type="text" id="newPassword" placeholder="סיסמא חדשה" required>
+                    </div>
+                    <div class="input-box">
+                        <label>אימות סיסמא חדשה</label>
+                        <input class="hebrew form-control" type="text" id="newAgainPassword" placeholder="אימות סיסמא חדשה" required>
+                    </div>
+                    <span id="errorM"></span>
+                    <input type="submit" value="שלח" class="primary-btn btn btn-primary" id="change-Password-modal-btn">
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+
+</html>

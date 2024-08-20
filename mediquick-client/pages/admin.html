@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Admin</title>
+    <!-- קישורים ל-Bootstrap CSS ו-JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- קישור נוסף ל-jQuery (לא חובה, כבר יש אחד מעלה) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <!--<link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/style2.css" rel="stylesheet" />-->
+    <!-- קישורים ל-DataTables CSS ו-JS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+
+    <!-- קישורים לסקריפטים וקבצי CSS מקומיים -->
+    <script src="./../scripts/ajaxCalls.js"></script>
+    <script src="./../scripts/general-script.js"></script>
+    <script src="../scripts/admin.js" defer></script>
+    <script src="../scripts/addQuestionModal.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js" defer></script>
+    <link href="../styles/navbar-style.css" defer rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@200;300;400;500;600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="./../styles/admin-style.css">
+    <script src="../scripts/editModals.js" defer></script>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./../images/favicon/site.webmanifest">
+    
+
+</head>
+
+<body dir="rtl">
+    <!-- ספינר -->
+    <div id="spinner" class="spinner">
+        <div class="spinner-container">
+            <div class="spinner-border"></div>
+            <p>טוען...</p>
+        </div>
+    </div>
+    <header>
+        <img src="./../images/logo1.png" class="logo" alt="">
+    </header>
+    <main>
+        <br />
+        <div class="control">
+            <div id="btnDiv" style="width:100%; text-align:center">
+                <input type="button" class="btn-admin btn btn-primary" value="ניהול משתמשים" id="manageUsersBtn"
+                       onclick="getUsersDataTable()" />
+                <input type="button" class="btn-admin btn btn-primary" value="ניהול מאגר שאלות" id="manageQuestionsBtn"
+                       onclick="getQuestisonsDataTable()" />
+                <br />
+                <input type="button" class="btn-admin btn btn-primary" value="הוספת שאלה בעזרת בינה מלאכותית" id="addQuestionByGemini"
+                       onclick="addQuestionByGemini()" />
+                <br /><br />
+                <input type="button" class="btn-admin btn btn-primary" value="הצג את כלל השאלות" id="renderQuestionTableAgain"
+                       onclick="renderQuestionTableAgain()" />
+            </div>
+            <!--datatable-->
+            <div class="container">
+                <form id="UsersForm" style="width:100%; visibility: collapse;">
+                    <table id="usersTable" class="display nowrap table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>מזהה</th>
+                                <th>שם פרטי</th>
+                                <th>שם משפחה</th>
+                                <th>דואר אלקטרוני</th>
+                                <th>סיסמא</th>
+                                <th>מספר נייד</th>
+                                <th>פעיל</th>
+                                <th>מנהל</th>
+                                <th>עריכה</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </form>
+                <form id="QuestionForm" style="width:100%; visibility: collapse;">
+                    <table id="QuestionTable" class="display table table-striped table-bordered">
+                        <thead dir="rtl">
+                            <tr>
+                                <th>מס סידורי</th>
+                                <th>תוכן השאלה</th>
+                                <th>תשובה נכונה</th>
+                                <th>מסיח 1</th>
+                                <th>מסיח 2</th>
+                                <th>מסיח 3</th>
+                                <th>הסבר</th>
+                                <th>נושא</th>
+                                <th>רמת קושי</th>
+                                <th>סטטוס</th>
+                                <th>יוצר</th>
+                                <!-- <th>מספר שאלות כולל</th>
+                                <th>מספר שאלות נכונות</th> -->
+                                <th>עריכה</th>
+                                <th>בדיקת דמיון</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </form>
+            </div>
+
+            <!--edit user modal-->
+            <div id="EditUserModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="clear-form suForm">
+                        <img src="./../images/icons/clear-form-24.svg" alt="" class="clear-form-logo"
+                             title="Delete details" onclick="resetForm()">
+                    </div>
+                    <form action="" id="editUserModal" class="eUForm">
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="email" placeholder="דואר אלקטרוני" disabled>
+                        </div>
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="first-name" placeholder="שם פרטי">
+                        </div>
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="last-name" placeholder="שם משפחה">
+                        </div>
+                        <div class="input-box password-box">
+                            <input type="password" class="hebrew form-control align-right"
+                                   id="password" placeholder="סיסמא">
+                            <img src="./../images/icons/eye-open.svg" class="eye_img" id="modal-password-eye-icon"
+                                 onclick="togglePasswordAdmin(this)">
+                        </div>
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="phone-number"
+                                   placeholder="מספר טלפון">
+                        </div>
+                        <input type="submit" value="עדכן" class="primary-btn btn btn-primary" id="edit-user-modal-btn">
+                    </form>
+                </div>
+            </div>
+
+            <!--question user modal-->
+            <div id="EditQuestionModal" class="modal">
+                <div class="modal-content" id="questionEditModal">
+                    <span class="close">&times;</span>
+                    <div class="clear-form suForm">
+                        <img src="./../images/icons/clear-form-24.svg" alt="" class="clear-form-logo"
+                             title="Delete details" onclick="resetForm()">
+                    </div>
+                    <form action="" id="editQuestionForm" class="eUForm">
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="qSerialNumber" placeholder="מספר סידורי" disabled>
+                        </div>
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="content" placeholder="תוכן">
+                        </div>
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="rightAnswer" placeholder="תשובה נכונה">
+                        </div>
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="wrongAnswer1" placeholder="מסיח 1">
+                        </div>
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="wrongAnswer2" placeholder="מסיח 2">
+                        </div>
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="wrongAnswer3" placeholder="מסיח 3">
+                        </div>
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="explanation" placeholder="הסבר">
+                        </div>
+                        <div class="input-box">
+                            <select id="topicSelect" name="topic" class="form-control">
+                                <!-- Options will be loaded dynamically -->
+                            </select>
+                        </div>
+                        <input type="submit" value="עדכן" class="primary-btn btn btn-primary" id="edit-Question-modal-btn">
+                    </form>
+                </div>
+            </div>
+
+            <!--gemini modal-->
+            <div id="myModal" class="modal">
+                <div class="modal-content" id="geminiModal">
+                    <span class="close">&times;</span>
+                    <div class="clear-form suForm">
+                        <img src="./../images/icons/clear-form-24.svg" alt="" class="clear-form-logo" title="Delete details"
+                             onclick="resetGeminiForm()">
+                    </div>
+                    <br />
+                    <form action="" id="addQuestionForm" class="AQForm">
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="number" id="numOfQuestions" pattern="[1-8]{1}"
+                                   placeholder="מספר שאלות רצוי" required>
+                        </div>
+                        <div class="input-box">
+                            <input class="hebrew form-control" type="text" id="textInput" placeholder="הזן את הטקסט הרצוי" required>
+                        </div>
+                        <div class="input-box">
+                            <select id="topicSelectToGemini" name="topic" class="form-control" required>
+                                <!-- Options will be loaded dynamically -->
+                            </select>
+                        </div>
+                        <input type="submit" value="שליחה" class="primary-btn btn btn-primary" id="send-orders-modal-btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

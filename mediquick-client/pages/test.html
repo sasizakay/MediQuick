@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--jQuery library-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+     <!--ajax Calls-->
+    <script src="./../scripts/ajaxCalls.js"></script>
+     <!--Page script-->
+    <script src="./../scripts/general-script.js"></script>
+    <script src="./../scripts/test-script.js" defer></script>
+     <!--Styles-->
+    <link rel="stylesheet" href="./../styles/navbar-style.css">
+    <link rel="stylesheet" href="./../styles/test-style.css">
+     <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+     <!--Open-Sans font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <title>מבחן</title>
+     <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="./../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./../images/favicon/site.webmanifest">
+</head>
+
+<body>
+    <header>
+        <img src="./../images/logo1.png" class="logo" alt="">
+        <nav>
+            <div class="nav-links">
+                <a href="./forum.html">
+                    <div>פורום</div>
+                </a>
+                <a href="#">
+                    <div class="clicked">מבחן</div>
+                </a>
+                <a href="./practice.html">
+                    <div>תרגול</div>
+                </a>
+                <a href="./personal-page.html">
+                    <div><img src="./../images/icons/person.svg" alt=""></div>
+                </a>
+                <a href="./main-page.html">
+                    <div><img src="./../images/icons/home.svg" alt=""></div>
+                </a>
+                <div class="menu" onclick="toggleMenu()">
+                    <img src="./../images/icons/menu-hamburger.svg" alt="תפריט">
+                </div>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="./main-page.html">עמוד ראשי</a>
+                <a href="./personal-page.html">אזור אישי</a>
+                <a href="./practice.html">תרגול</a>
+                <a class="clicked" href="#">מבחן</a>
+                <a href="./forum.html">פורום</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="pre-test">
+                <br /><br />
+
+                <div class="instructions">
+                    <span>  ברוכים הבאים למודול המבחן!</span>
+                    <br /><br />
+                    <span>
+                        המבחן הזה נבנה בצורה דינאמית המותאמת לרמת ההצלחה שלך בכל נושא. הוא מורכב מ-30 שאלות, המשתייכות ל-5
+                        נושאים שנבחרים באופן אקראי. רמת הקושי של כל שאלה בתחום מסוים נקבעת לפי הביצועים שלך בשאלה הקודמת באותו נושא:
+                        אם ענית נכון, השאלה הבאה תהיה באותה רמת קושי או קשה יותר; אם ענית שגוי,
+                        השאלה הבאה תהיה באותה רמת קושי או קלה יותר. תשובות לשאלות בנושאים אחרים לא ישפיעו על רמת הקושי בנושאים אלו.
+                    </span>
+                    <br /><br />
+                    <span>
+                        לאחר מענה על שאלה, לא ניתן לחזור אחורה. הזמן המוקצב למבחן הוא שעה וחצי.
+                        באפשרותך לסיים את המבחן בכל עת על ידי לחיצה על כפתור "סיום מבחן".
+                        סיום המבחן יתרחש כאשר תענה על כל 30 השאלות, תלחץ על "סיום מבחן", או שייגמר הזמן המוקצב.
+                    </span>
+                    <br /><br />
+                    <span> בסיום, יוצג סיכום המבחן עם ניתוחים סטטיסטיים על ביצועיך. בהצלחה! </span>
+                </div>
+                <br /><br />
+                <input type="button" value="התחל מבחן" class="primary-btn" onclick="startTest()">
+            </div>
+            <div class="test-content">
+                <div class="upDiv">
+
+                </div>
+
+                <div class="buttons">
+                    <div id="countdown" class="countdown"></div>
+                    <input type="button" value="עבור לשאלה הבאה" id="GoToNextQuestion" class="primary-btn" onclick="GoToNextQuestion()">
+                    <input type="button" value="סיום מבחן" class="red-btn" onclick="EndTest()">
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

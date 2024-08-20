@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- ajax Calls -->
+    <script src="./../scripts/ajaxCalls.js"></script>
+    <!-- Page script -->
+    <script src="./../scripts/general-script.js"></script>
+    <script src="./../scripts/question-insert-script.js" defer></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="./../styles/navbar-style.css">
+    <link rel="stylesheet" href="./../styles/question-insert-style.css">
+    <!-- Poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Open-Sans font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <title>הוספת שאלה</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./../images/favicon/site.webmanifest">
+
+</head>
+
+<body>
+    <header>
+        <img src="./../images/logo1.png" class="logo" alt="">
+        <nav>
+            <div class="nav-links">
+                <a href="./forum.html">
+                    <div>פורום</div>
+                </a>
+                <a href="./test.html">
+                    <div>מבחן</div>
+                </a>
+                <a href="./practice.html">
+                    <div>תרגול</div>
+                </a>
+                <a href="./personal-page.html">
+                    <div><img src="./../images/icons/person.svg" alt=""></div>
+                </a>
+                <a href="./main-page.html">
+                    <div><img src="./../images/icons/home-clicked.svg" alt=""></div>
+                </a>
+                <div class="menu" onclick="toggleMenu()">
+                    <img src="./../images/icons/menu-hamburger.svg" alt="תפריט">
+                </div>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="./main-page.html">עמוד ראשי</a>
+                <a href="./personal-page.html">אזור אישי</a>
+                <a href="./practice.html">תרגול</a>
+                <a href="./test.html">מבחן</a>
+                <a href="./forum.html">פורום</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="wrapper">
+            <form action="" id="qiForm" class="question-insert">
+                <div class="inputs-wrapper">
+                    <div class="grid-item">
+                        <label for="" class="hebrew">תוכן השאלה</label>
+                        <textarea id="content" class="input" required></textarea>
+                    </div>
+                    <div class="grid-item">
+                        <label for="" class="hebrew">תשובה נכונה</label>
+                        <textarea id="correct-answer" class="input correct-answer" required></textarea>
+                    </div>
+                    <div class="grid-item">
+                        <label for="" class="hebrew">תשובה שגויה 1</label>
+                        <textarea id="wrong-answer1" class="input" required></textarea>
+                    </div>
+                    <div class="grid-item">
+                        <label for="" class="hebrew">תשובה שגויה 2</label>
+                        <textarea id="wrong-answer2" class="input" required></textarea>
+                    </div>
+                    <div class="grid-item">
+                        <label for="" class="hebrew">תשובה שגויה 3</label>
+                        <textarea id="wrong-answer3" class="input" required></textarea>
+                    </div>
+                    <div class="grid-item">
+                        <label for="" class="hebrew">הסבר</label>
+                        <textarea id="explanation" class="input"></textarea>
+                    </div>
+                    <div class="grid-item">
+                        <label for="topicsList" class="hebrew">נושא השאלה</label>
+                        <select id="topicsList" class="input" required>
+                            <option value="" disabled selected hidden>בחר נושא</option>
+                        </select>
+                    </div>
+                    <div class="info-text">
+                        כל השדות הינן חובה. <br>השאלה תועבר למאגר הביניים לאישור המנהל לפני שתתווסף למערכת.<br> המנהל
+                        רשאי לערוך את כל רכיבי השאלה לפי שיקול דעתו.
+                    </div>
+                    <input type="submit" value="הוסף שאלה" class="primary-btn" id="question-insert-btn">
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
