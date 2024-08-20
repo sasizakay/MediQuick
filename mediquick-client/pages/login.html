@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- ajax Calls -->
+    <script src="./../scripts/ajaxCalls.js"></script>
+    <!-- Page script -->
+    <script src="./../scripts/general-script.js"></script>
+    <script src="./../scripts/sign-up-modal-script.js" defer></script>
+    <script src="./../scripts/login-script.js" defer></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="./../styles/login-style.css">
+    <!-- Poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Open-Sans font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <title>Login - MEDIQUICK</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./../images/favicon/site.webmanifest">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="card login-card">
+            <div class="logo-image"><img src="./../images/logo1.png" alt="" class="logo"></div>
+            <form action="" id="login-form">
+                <div class="input-box email" id="email-textbox">
+                    <input type="text" id="emailText"
+                           placeholder="example@email.com" required>
+                    <img src="./../images/icons/mail.svg" alt="">
+                </div>
+                <div class="input-box password" id="password-textbox">
+                    <input type="password" id="passwordText" class="password"
+                           placeholder="password..." required>
+                    <img src="./../images/icons/eye-open.svg" id="password-eye-icon" onclick="toggleLoginPassword(this)">
+                    <img src="./../images/icons/password.svg" alt="">
+                </div>
+                <div id="passwordError" style="display:none">
+                    <span>אחד או יותר מהפרטים המזהים שהקלדת שגוי.</span>
+                    <br />
+                    <span>נסה שוב!</span>
+                </div>
+                <br />
+                <input type="submit" value="התחברות" class="primary-btn" id="log-in-btn">
+                <label for="">או</label>
+                <input type="button" value="רישום" class="secondary-btn" id="sign-up-btn">
+            </form>
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="clear-form suForm">
+                        <img src="./../images/icons/clear-form-24.svg" alt="" class="clear-form-logo"
+                            title="Delete details" onclick="resetForm()">
+                    </div>
+                    <form action="" id="sign-up-form" class="suForm">
+                        <div class="input-box"><input class="hebrew" type="text" id="email" placeholder="מייל"></div>
+                        <div class="input-box"><input class="hebrew" type="text" id="first-name" placeholder="שם פרטי">
+                        </div>
+                        <div class="input-box"><input class="hebrew" type="text" id="last-name" placeholder="שם משפחה">
+                        </div>
+                        <div class="input-box"><input class="hebrew" type="text" id="phone-number"
+                                placeholder="מספר טלפון"></div>
+                        <div class="input-box" id="password-textbox"><input type="password" class="hebrew align-right"
+                                id="password" class="password" placeholder="סיסמא">
+                            <img src="./../images/icons/eye-open.svg" class="eye_img" id="modal-password-eye-icon"
+                                onclick="togglePassword(this)">
+                        </div>
+                        <div class="input-box" id="confirm-password-textbox"><input type="password"
+                                class="hebrew align-right" id="confirm-password" class="password"
+                                placeholder="אימות סיסמא">
+                            <img src="./../images/icons/eye-open.svg" class="eye_img"
+                                id="modal-confirm-password-eye-icon" onclick="togglePassword(this)">
+                        </div>
+                        <input type="submit" value="הרשמה" class="primary-btn" id="sign-up-modal-btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

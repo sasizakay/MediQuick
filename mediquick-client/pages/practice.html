@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- ajax Calls -->
+    <script src="./../scripts/ajaxCalls.js"></script>
+    <!-- Page script -->
+    <script src="./../scripts/general-script.js"></script>
+    <script src="./../scripts/practice-script.js" defer></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="./../styles/navbar-style.css">
+    <link rel="stylesheet" href="./../styles/practice-style.css">
+    <!-- Poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Open-Sans font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <title>תרגול</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./../images/favicon/site.webmanifest">
+</head>
+
+<body>
+    <header>
+        <img src="./../images/logo1.png" class="logo" alt="">
+        <nav>
+            <div class="nav-links">
+                <a href="./forum.html">
+                    <div>פורום</div>
+                </a>
+                <a href="./test.html">
+                    <div>מבחן</div>
+                </a>
+                <a href="#">
+                    <div class="clicked">תרגול</div>
+                </a>
+                <a href="./personal-page.html">
+                    <div><img src="./../images/icons/person.svg" alt=""></div>
+                </a>
+                <a href="main-page.html">
+                    <div><img src="./../images/icons/home.svg" alt=""></div>
+                </a>
+                <div class="menu" onclick="toggleMenu()">
+                    <img src="./../images/icons/menu-hamburger.svg" alt="תפריט">
+                </div>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="./main-page.html">עמוד ראשי</a>
+                <a href="./personal-page.html">אזור אישי</a>
+                <a class="clicked" href="#">תרגול</a>
+                <a href="./test.html">מבחן</a>
+                <a href="./forum.html">פורום</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="grid">
+            <div class="buttons grid-item">
+                <button id="filter-btn" class="primary-btn">
+                    <span>סנן שאלות</span>
+                </button>
+                
+
+            </div>
+            <div id="filters" class="filters grid-item">
+                <form id="start-practice-form">
+                    <ul id="topicsList" class="topics-list">
+                        
+                    </ul>
+                    <div id="diffsList">
+                        <h3>רמת קושי</h3>
+                        <ul>
+                            <li><input type="checkbox" id="diffLevel1" value="1">
+                                <label for="diffLevel1">קל</label>
+                            </li>
+                            <li><input type="checkbox" id="diffLevel2" value="2">
+                                <label for="diffLevel2">קל-בינוני</label>
+                            </li>
+                            <li><input type="checkbox" id="diffLevel3" value="3">
+                                <label for="diffLevel3">בינוני</label>
+                            </li>
+                            <li><input type="checkbox" id="diffLevel4" value="4">
+                                <label for="diffLevel4">בינוני - קשה</label>
+                            </li>
+                            <li><input type="checkbox" id="diffLevel5" value="5">
+                                <label for="diffLevel5">קשה</label>
+                            </li>
+                        </ul>
+                        <input type="submit" value="התחל תרגול" class="primary-btn" id="start-practice-btn">
+                    </div>
+                </form>
+            </div>
+            <!-- start render -->
+            <div id="question-container" class="question grid-item">
+                <!-- <div class="question-wrapper">
+                    <div class="question-content">
+                        <b>16. מהו אחד התפקידים החשובים של עובדי נדבך הגבול בארגון שירות?</b>
+                    </div>
+                    <div class="options">
+                        <ul>
+                            <li>
+                                <div class="option-1">
+                                    <p class="option">א. שומרי שער המידע - הם מקור מידע חשוב לגבי גישות של לקוחות
+                                        ואסטרטגיות של מתחרים</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="option-2">
+                                    <p class="option">ב. אחראים על ניהול התורים והקצאת המשאבים</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="option-3">
+                                    <p class="option">ג. אחראים על פיתוח מוצרים ושירותים חדשים</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="option-4">
+                                    <p class="option">ד. אחראים על ניהול תקציב השירות</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                    </div>
+                </div> -->
+            </div>
+            <div class="explanation grid-item">
+                <div class="expl-and-arrows">
+                    <button id="expl-btn" class="secondary-btn">הצג הסבר</button>
+                    <div class="arrows">
+                        <img id="prevQ" class="disabled-btn" src="./../images/icons/arrow-right.svg" alt=""
+                            onclick="prevQuestion()">
+                        <img id="nextQ" src="./../images/icons/arrow-left.svg" alt="" onclick="nextQuestion()">
+                    </div>
+                </div>
+                <div class="expl-content">
+                    <span id="expl">
+                        הטקסט מציין שעובדי נדבך הגבול, הבאים במגע ישיר עם לקוחות, הם מקור מידע חשוב
+                        לגבי גישות של לקוחות, אסטרטגיות של מתחרים ורעיונות לשיפור השירות.
+                    </span>
+                </div>
+                
+            </div>
+            <!-- end render -->
+        </div>
+    </main>
+</body>
+
+</html>

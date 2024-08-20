@@ -1,0 +1,787 @@
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    max-width: 1600px;
+}
+
+main {
+    direction: rtl;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 50px 25px;
+    max-width: 100%;
+}
+
+.container {
+    direction: rtl;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 40%;
+    row-gap: 10px;
+    column-gap: 0px;
+}
+
+.options {
+    margin-right: 25px;
+    height: auto;
+}
+
+.question {
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    padding: 3%;
+    margin: 8px;
+    transition: 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    transition: background-color 0.5s ease;
+    position: relative;
+}
+
+    .question::-webkit-scrollbar {
+        width: 10px;
+        opacity: 0.5;
+    }
+
+    .question::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 20px;
+        margin-block: 0.5em;
+    }
+
+    .question::-webkit-scrollbar-thumb {
+        background-color: rgba(52, 147, 138, 0);
+        transition: background-color 1.5s ease;
+        border-radius: 100px;
+        border: 3px solid white;
+    }
+
+    .question:hover::-webkit-scrollbar-thumb {
+        background-color: rgba(52, 147, 138, 0.5);
+    }
+
+.timeline::-webkit-scrollbar {
+    height: 6px;
+}
+
+.question.open {
+    overflow-y: auto;
+}
+
+.closed {
+    height: 8dvh;
+    width: 30dvw;
+    min-height: 65px;
+    transition: 0.6s ease;
+    align-items: center;
+}
+
+.open {
+    height: 30dvh;
+    min-height: 65px;
+    width: 30dvw;
+    padding: 3%;
+    transition: 0.6s ease;
+}
+
+.question-content {
+    width: 100%;
+    display: inline-block;
+    height: auto;
+}
+
+.question img {
+    width: 20px;
+    height: 20px;
+}
+
+h2 {
+    color: #03a696;
+    width: 100%;
+    margin: 0;
+    margin-top: 10px;
+    text-align: center;
+    padding: 5px;
+}
+
+.question-wrapper {
+    height: 100%;
+}
+
+.closed .options {
+    height: 0;
+    opacity: 0;
+}
+
+.closed .explanation {
+    height: 0;
+    opacity: 0;
+}
+
+.open .options {
+    opacity: 1;
+}
+
+.open .explanation {
+    height: auto;
+    margin-top: 0px !important;
+}
+
+#charts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 55%;
+    padding: 25px;
+}
+
+.chart-container {
+    width: 100%;
+    height: 400px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .chart-container canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+#percentageCorrectChart {
+    width: 100%;
+    height: 700px;
+}
+
+.chart-container.small-chart {
+    width: 100%;
+    height: 500px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    margin: 1%
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+.timeline-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    direction: ltr;
+    white-space: nowrap;
+    padding: 20px 0;
+    margin: 20px 0;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+    width:100%;
+}
+
+.timeline {
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    list-style: none;
+    height: 30dvh;
+}
+
+.timeline-item {
+    position: relative;
+    text-align: center;
+    flex: 0 0 auto;
+    min-width: 200px;
+    white-space: normal;
+    margin: 0 10px;
+}
+
+.timeline-date {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: #333;
+}
+
+.timeline-content {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 150px;
+    z-index: 2;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #00bfa5;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border: 3px solid #fff;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: var(--before-width, 100%);
+    height: 2px;
+    background-color: #00bfa5;
+    z-index: 0;
+    transform: translateY(-50%);
+}
+
+.changePassword {
+    display: flex;
+/*    justify-content: center;
+    align-items: center;
+    padding: 8px;*/
+position:absolute;
+left:30px;
+top:100px;
+z-index:100;
+}
+
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .question.open {
+        width: 55dvw;
+    }
+
+    .question.closed {
+        width: 55dvw;
+    }
+
+    #charts {
+        width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .question.open {
+        width: 75dvw;
+    }
+
+    .question.closed {
+        width: 75dvw;
+    }
+}
+
+#TestAverageAndGrades {
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    display: inline-block;
+    margin: 10px;
+}
+
+#calendar-container {
+    width: 70%;
+    align-content: center;
+    height: 500px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px;
+    padding: 20px;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #03a696;
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+}
+
+    #calendar-header button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+#month-year {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 20px;
+    background: #f8f8f8;
+    text-align: center;
+    font-weight: bold;
+}
+
+#calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 20px;
+    background: #fff;
+    text-align: center;
+}
+
+    #calendar-dates div {
+        padding: 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        position: relative;
+    }
+
+        #calendar-dates div:hover {
+            background-color: #03a696;
+            color: #fff;
+        }
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 100;
+    width: 200px;
+}
+
+    .tooltip input {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    .tooltip button {
+        margin-right: 5px;
+    }
+
+#questions-container {
+    max-height: 1010px;
+    width: 520px;
+    overflow-y: auto;
+    direction: rtl;
+    overflow-x: hidden;
+    position: relative;
+    margin: 30px;
+    align-content: center;
+}
+
+    #questions-container::-webkit-scrollbar{
+        direction: ltr;
+        width: 10px;
+        opacity: 0.5;
+    }
+
+    #questions-container::-webkit-scrollbar-track{
+        background-color: transparent;
+        border-radius: 20px;
+        margin-block: 0.5em;
+    }
+
+    #questions-container::-webkit-scrollbar-thumb{
+        background-color: rgba(52, 147, 138, 0);
+        transition: background-color 1.5s ease;
+        border-radius: 100px;
+        border: 3px solid white;
+    }
+
+    #questions-container:hover::-webkit-scrollbar-thumb{
+        background-color: rgba(52, 147, 138, 0.5);
+    }
+
+/*.task-button {
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    
+    display: block;
+    margin: 2px auto;
+    position: relative;
+    z-index: 10;
+}*/
+.task-button {
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    margin: 1px auto; /* מרווח קטן יותר כדי למנוע עומס */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.date {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* מיקום הכפתורים אחד מתחת לשני */
+    align-items: center; /* מיקום הכפתורים במרכז התא */
+    justify-content: center; /* מיקום הכפתורים במרכז התא אנכית */
+    gap: 2px; /* מרווח בין הכפתורים */
+}
+
+    .task-button:hover {
+        background-color: darkgray;
+    }
+
+.options-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 100;
+}
+
+    .options-menu.active {
+        display: block;
+    }
+
+    .options-menu button {
+        display: block;
+        width: 100%;
+        padding: 5px 10px;
+        margin: 5px 0;
+        cursor: pointer;
+        background-color: #f1f1f1;
+        border: none;
+        border-radius: 3px;
+    }
+
+        .options-menu button:hover {
+            background-color: #ddd;
+        }
+
+.edit-task-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+    .edit-task-form label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .edit-task-form input {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    .edit-task-form button {
+        margin-right: 10px;
+    }
+
+.date {
+    position: relative;
+}
+
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #03a696;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+#testContainer {
+    padding-left:80px;
+    padding-top: 15px;
+    width: 600px;
+    max-width: 100%;
+    overflow-x: auto;
+    margin-top:25px;
+    margin: 0 auto; /* ממקם את הקונטיינר במרכז */
+}
+
+#testSummaryTable {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* הוספת הצללה קלה */
+    border-radius: 10px; /* פינות מעוגלות */
+    overflow: hidden; /* חיתוך התוכן העודף */
+}
+
+    #testSummaryTable th {
+        background-color: #03a696; /* צבע רקע לראש הטבלה */
+        color: #fff; /* צבע הטקסט בלבן */
+        padding: 10px; /* מרווח גדול יותר */
+        text-align: center;
+        font-weight: bold;
+        border-bottom: 1px solid #ddd; /* הוספת גבול תחתון עדין */
+    }
+
+    #testSummaryTable td {
+        padding: 12px; /* מרווח גדול יותר */
+        text-align: center;
+        color: #333; /* צבע טקסט כהה יותר */
+        border-bottom: 1px solid #eee; /* הוספת גבול תחתון עדין */
+        background-color: white; /* צבע רקע בהיר יותר */
+        word-wrap: break-word;
+    }
+
+    #testSummaryTable tbody {
+        max-height: 448px;
+        overflow-y: auto;
+        display: block;
+        width: 100%;
+    }
+
+        #testSummaryTable thead, #testSummaryTable tbody tr {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+    #testSummaryTable thead {
+/*        width: calc(100% - 1em);
+*/
+width:100%;
+    }
+
+    #testSummaryTable td a {
+        color: #03a696; /* צבע טקסט של הקישורים */
+        text-decoration: none;
+    }
+
+        #testSummaryTable td a:hover {
+            text-decoration: underline;
+        }
+
+    #testSummaryTable tbody tr:hover {
+        background-color: #e9f7f5; /* שינוי צבע רקע בשורה הנבחרת */
+    }
+
+    /* סגנון פסים כל שורה שנייה */
+    #testSummaryTable tbody tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
+    #testSummaryTable th:first-child,
+    #testSummaryTable td:first-child {
+        width: 60px; /* הגדרת רוחב ספציפי לעמודה הראשונה */
+        text-align: center; /* יישור הטקסט למרכז */
+    }
+
+    #testSummaryTable tbody::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    #testSummaryTable tbody::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 20px;
+        margin-block: 0.5em;
+    }
+
+    #testSummaryTable tbody::-webkit-scrollbar-thumb {
+        background-color: rgba(52, 147, 138, 0.5);
+        border-radius: 100px;
+        border: 3px solid white;
+    }
+
+    #testSummaryTable tbody:hover::-webkit-scrollbar-thumb {
+        background-color: rgba(52, 147, 138, 0.8);
+    }
+
+/****************************/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Black semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #f9f9f9; /* Light gray background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Light shadow */
+    padding: 30px; /* Inner spacing */
+    width: 90%;
+    max-width: 450px; /* Maximum width */
+    position: relative;
+    animation: slide-down 0.4s ease-out; /* Slide down animation */
+}
+
+    .modal-content h2 {
+        margin-top: 0;
+        color: #333; /* Dark text color */
+        font-size: 1.5em; /* Heading size */
+        text-align: center; /* Center alignment */
+    }
+
+    .modal-content .input-box {
+        margin: 15px 0; /* Spacing between elements */
+    }
+
+        .modal-content .input-box label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666; /* Dark gray text color */
+            font-weight: bold;
+        }
+
+        .modal-content .input-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 8px; /* Rounded corners */
+            font-size: 1em; /* Font size */
+            color: #333; /* Text color */
+        }
+
+    .modal-content .primary-btn {
+        background-color: #03a696; /* Button background color */
+        color: #fff; /* Button text color */
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px; /* Rounded corners */
+        cursor: pointer;
+        width: 100%; /* Full width button */
+        font-size: 1em;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
+    }
+
+        .modal-content .primary-btn:hover {
+            background-color: #028d75; /* Darker background on hover */
+        }
+
+    .modal-content .closePassword {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 1.5em; /* Close button size */
+        cursor: pointer;
+        color: #999; /* Close button color */
+    }
+
+        .modal-content .closePassword:hover {
+            color: #666; /* Darker color on hover */
+        }
+
+.clear-form-logo {
+    position: absolute;
+    left: 30px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+    .clear-form-logo:hover {
+        opacity: 0.7; /* Slight fade on hover */
+    }
+
+#changePasswordForm #errorM {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-50px); /* Slide from above */
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0); /* Final position */
+        opacity: 1;
+    }
+}
